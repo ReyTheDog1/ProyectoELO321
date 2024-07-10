@@ -1,0 +1,14 @@
+version: '3'
+services:
+  server:
+    build: ./server
+    ports:
+      - "8000:8000"
+  client1:
+    build: ./client
+    depends_on:
+      - server
+  client2:
+    build: ./client
+    depends_on:
+      - server
