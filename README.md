@@ -2,5 +2,20 @@
  
 Proyecto de investigación basado en el estudio de contenedores y su uso.
 
-(...)Los contenedores son una tecnología de virtualización ligera que permite ejecutar aplicaciones de manera aislada y consistente en diferentes entornos. Se usan ampliamente para desplegar aplicaciones debido a su eficiencia y portabilidad. En este documento, se aborda la problemática de manejar peticiones concurrentes en un servidor utilizando contenedores. La sincronizacion es crucial en este contexto para evitar condiciones de carrera y garantizar la coherencia de los datos.
-Se implementa un experimento pr actico en el que un servidor, ejecutado dentro de un contenedor Docker, recibe peticiones concurrentes de dos clientes tambi ́en en contenedores. Para manejar la concurrencia, se utilizan semáforos, un mecanismo de sincronización que controla el acceso a recursos compartidos.(...)
+Descripción de los Archivos
+
+`3.1. server/server.py`
+Este archivo contiene el código del servidor HTTP. Aquí se usa el módulo http.server para manejar las peticiones HTTP y threading para gestionar la concurrencia mediante un semáforo. También utilizamos el módulo logging para registrar mensajes de log.
+
+`3.2. server/Dockerfile`
+Este archivo define cómo construir la imagen Docker para el servidor. Utiliza una imagen base de Python y copia el script del servidor al contenedor.
+
+`3.3. client/client.py`
+Este archivo contiene el código del cliente que realiza una petición GET al servidor y muestra la respuesta recibida.
+
+`3.4. client/Dockerfile`
+Este archivo define cómo construir la imagen Docker para el cliente. Utiliza una imagen base de Python, copia el script del cliente e instala las dependencias necesarias.
+
+`3.5. docker-compose.yml`
+Este archivo define los servicios necesarios para el proyecto utilizando Docker Compose. Orquesta la construcción y ejecución de los contenedores del servidor y los clientes.
+
